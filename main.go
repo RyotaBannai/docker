@@ -15,7 +15,7 @@ func main() {
     })
 
     log.Println("start server")
-    server := &http.Server{Addr: ":8081"}
+    server := &http.Server{Addr: ":80"}
     if err := server.ListenAndServe(); err != nil {
         log.Println(err)
     }
