@@ -11,3 +11,8 @@
 ## すべてのcontainer, images を消す
 - `docker rm $(docker ps -a -q)` -> delete all containers.
 - `docker system prune -a` -> delet all images.
+## GCP
+- 課金はGCEのインスタンス数x 稼働時間
+- インスタンス数の確認コマンド `gcloud compute instances list` >>> `Listed 0 items.`と表示されれば課金安全.
+- container registory などその他サービスも課金対象.　GCRは`1 GB あたり月額約 $0.026` + `脆弱性スキャンは初回スキャンするコンテナ イメージあたり $0.26 ` + `[network-pricing](https://cloud.google.com/storage/pricing?hl=ja#network-pricing)`. Network priceはdokcer build したときに自動的にcloud strageに保管されて、storateバケットからkubenatesが読み取るときに、各サービスの大陸が違うと多分課金される（$0.01/GB）.　「**Google Cloud 内のネットワーク（下り）**は、Cloud Storage のあるバケットから別のバケットにデータを移動またはコピーしたとき、または`別の Google Cloud サービスがバケット内のデータにアクセスしたとき`に適用されます。」
+- その他よく使う [gcloudコマンド](https://qiita.com/masaaania/items/7a83c5e44e351b4a3a2c)
